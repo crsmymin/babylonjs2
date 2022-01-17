@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+    <script src="https://preview.babylonjs.com/ammo.js"></script>
+    <script src="https://preview.babylonjs.com/cannon.js"></script>
+    <script src="https://preview.babylonjs.com/Oimo.js"></script>
+    <script src="https://preview.babylonjs.com/earcut.min.js"></script>
+    <script src="https://preview.babylonjs.com/babylon.js"></script>
+    <script src="https://preview.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+    <script src="https://preview.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+    <script src="https://preview.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+    <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+    <script src="https://preview.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+    <script src="https://preview.babylonjs.com/gui/babylon.gui.min.js"></script>
+    <script src="https://preview.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <title>METAKONG</title>
+    <style>
+        html,
+        body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        #renderCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+
+        .wrap-users-negative {
+            left: 20px;
+        }
+
+        .wrap-users {
+            position: fixed;
+            top: 100px;
+            bottom: 20px;
+        }
+
+        .wrap-users .ul-users li {
+            position: relative;
+        }
+
+        .wrap-users .ul-users li {
+            padding: 5px;
+            min-width: 300px;
+            max-width: 360px;
+            margin-bottom: 10px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .wrap-users li .box-info {
+            display: flex;
+        }
+
+        .wrap-users li .box-txt {
+            width: 100%;
+        }
+
+        .wrap-users li .box-txt p {
+            margin: 10px 10px 10px 10px;
+            font-size: 18px;
+            text-overflow: ellipsis;
+        }
+
+        .wrap-users li .box-txt input {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="renderCanvas"></canvas>
+
+    <div class="wrap-users wrap-users-negative">
+        <ul class="ul-users ul-students">
+            <div>
+                <button id="setting" onclick="Buttontoggle()">
+                    닫기
+                </button>
+                <button id="avatar" onclick="setAvatartoggle()">
+                    캠
+                </button>
+            </div>
+            <li class="li-skeleton" >
+                <div class="box-info">
+                    <div class="box-txt">
+                        <p class="txt-name">User Name :</p>
+                        <input type="text" id="name" name="name" required minlength="4" maxlength="8" size="10">
+                        <button onclick="setNameLabel()">
+                            적용
+                        </button>
+                        <div class="box-thumbnail">
+                            <video id="video" width="320" height="240" autoplay>
+                            </video>
+                        </div>
+                        <div class="video-select">
+                            <h2>Video devices:</h2>
+                            <select class="deviceList" id="videoList"></select>
+    
+                            <h2>Audio devices:</h2>
+                            <select class="deviceList" id="audioList"></select>
+    
+                            <h2>Microphone devices:</h2>
+                            <select class="deviceList" id="micList"></select>
+    
+                        </div>
+                    </div>
+            </li>
+        </ul>
+    </div>
+    <script src="metakongControl.js"></script>
+    <script src="webrtc.js"></script>
+</body>
+
+</html>
